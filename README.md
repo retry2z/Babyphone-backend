@@ -20,13 +20,13 @@ https://documenter.getpostman.com/view/10051196/T1Djjedg
 ## Endpoints
 
 Product:  
- |  GET: '/api/room/' - fetching all room list.  
+ |  GET: '/api/room/' - fetching all available rooms list.  
  |  GET: '/api/room/:id' - fetching a room detail information about a room.  
  |  POST: '/api/room/' - creating a new room.  
  |  PATCH: '/api/room/:id' - modify the information about a owned room.  
  |  DELETE: '/api/room/:id' - delete the record about a owned room.  
- |  GET: '/api/room/:id/join' - creating a new room.  
- |  GET: '/api/room/:id/leave' - creating a new room.  
+ |  GET: '/api/room/:id/join' - join a room.  
+ |  GET: '/api/room/:id/leave' - leave a room.  
  
 
 Authentication:  
