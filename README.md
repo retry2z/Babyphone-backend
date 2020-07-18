@@ -19,7 +19,7 @@ https://documenter.getpostman.com/view/10051196/T1Djjedg
 
 ## Endpoints
 
-Product: 
+Product:  
  |  GET: '/api/room/' - fetching all room list.  
  |  GET: '/api/room/:id' - fetching a room detail information about a room.  
  |  POST: '/api/room/' - creating a new room.  
@@ -29,7 +29,7 @@ Product:
  |  GET: '/api/room/:id/leave' - creating a new room.  
  
 
-Authentication: 
+Authentication:  
  |  POST: '/api/auth/login' - Login with email and password to receive a authorization token.  
  |  POST: '/api/auth/register' - Create new account with email and password and receive a authorization token.  
 
