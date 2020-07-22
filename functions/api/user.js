@@ -4,12 +4,6 @@ const errHandler = require('../utils/errorHandler');
 const db = require('../services/repository');
 
 exports.profile = async (request, response) => {
-    const { uid } = request.user;
-
-    if (!uid) {
-        return response.status(401).json({ error: 'Unauthorized' });
-    }
-
     try {
         const user = await auth.profile(request.user.uid);
 
@@ -22,11 +16,6 @@ exports.profile = async (request, response) => {
 
 exports.update = async (request, response) => {
     const { name, imageUrl } = request.body;
-    const { uid } = request.user;
-
-    if (!uid) {
-        return response.status(401).json({ error: 'Unauthorized' });
-    }
 
     try {
         const { data } = await auth.profile(request.user.uid);
@@ -46,11 +35,6 @@ exports.update = async (request, response) => {
 
 exports.password = async (request, response) => {
     const { password, rePassword } = request.body;
-    const { uid } = request.user;
-
-    if (!uid) {
-        return response.status(401).json({ error: 'Unauthorized' });
-    }
 
     if (password !== rePassword) {
         return response.status(400).json({ message: 'Passwords are not equals' });
@@ -73,12 +57,6 @@ exports.password = async (request, response) => {
 }
 
 exports.logout = async (request, response) => {
-    const { uid } = request.user;
-
-    if (!uid) {
-        return response.status(401).json({ error: 'Unauthorized' });
-    }
-
     try {
         await auth.logout();
 
@@ -90,11 +68,6 @@ exports.logout = async (request, response) => {
 }
 
 exports.current = async (request, response) => {
-    const { uid } = request.user;
-
-    if (!uid) {
-        return response.status(401).json({ error: 'Unauthorized' });
-    }
     try {
         const user = await auth.currentUser();
 
@@ -107,13 +80,11 @@ exports.current = async (request, response) => {
 
 
 exports.created = async (request, response) => {
-    const uid = request.user.uid;
-
     try {
         const data = await db.list('rooms');
         const products = data.docs
             .map((doc) => {
-                if (doc.data().author === uid) {
+                if (doc.data().author === request.user.uid) {
                     return { ...doc.data(), id: doc.id }
                 }
             })
