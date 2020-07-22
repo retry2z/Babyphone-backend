@@ -52,10 +52,11 @@ const {
     update,
     password,
     current,
+    created,
 } = require('./api/user');
 
 app.get('/user', authGuard, profile);
-app.get('/user/rooms', authGuard, list);
+app.get('/user/rooms', authGuard, created);
 app.patch('/user', authGuard, update);
 app.put('/user/password', authGuard, password);
 app.get('/user/logout', authGuard, logout);

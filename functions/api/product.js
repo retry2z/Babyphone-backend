@@ -4,15 +4,10 @@ const errHandler = require('../utils/errorHandler');
 
 
 exports.list = async (request, response) => {
-    //const uid = request.user.uid;
-
     try {
         const data = await db.list('rooms');
         const products = data.docs
             .map((doc) => {
-                // if (doc.data().author === uid) {
-                //     return { ...doc.data(), id: doc.id }
-                // }
                 const item = {
                     ...doc.data()
                 }
@@ -21,7 +16,6 @@ exports.list = async (request, response) => {
             .filter(x => x);
 
         return response.json(products);
-
     } catch (err) {
         errHandler(err, response);
     }
@@ -36,7 +30,6 @@ exports.post = async (request, response) => {
         await db.post('rooms', { ...item, author: uid });
 
         return response.status(201).json({ data: item });
-
     } catch (err) {
         errHandler(err, response);
     }
@@ -81,22 +74,16 @@ exports.edit = async (request, response) => {
 
         await db.patch('rooms', id, new Product(temp));
         return response.status(200).json({ data: id + ' has been updated', });
-
     } catch (err) {
         errHandler(err, response);
     }
 }
 
 exports.details = async (request, response) => {
-    //const uid = request.user.uid;
     const { id } = request.params;
 
     try {
         const item = await (await db.get('rooms', id)).data();
-
-        // if (item.author !== uid) {
-        //     return response.status(401).json({ error: 'Permission denied' });
-        // }
 
         return response.status(200).json(item);
 

@@ -1,7 +1,7 @@
 const auth = require('../services/userManagement');
 const Account = require('../models/Account-validation');
 const errHandler = require('../utils/errorHandler');
-const { database } = require('../services/admin');
+const db = require('../services/repository');
 
 exports.profile = async (request, response) => {
     const { uid } = request.user;
@@ -106,3 +106,22 @@ exports.current = async (request, response) => {
 }
 
 
+exports.created = async (request, response) => {
+    const uid = request.user.uid;
+
+    try {
+        const data = await db.list('rooms');
+        const products = data.docs
+            .map((doc) => {
+                if (doc.data().author === uid) {
+                    return { ...doc.data(), id: doc.id }
+                }
+            })
+            .filter(x => x);
+
+        return response.json(products);
+
+    } catch (err) {
+        errHandler(err, response);
+    }
+}
