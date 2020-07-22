@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const app = require('express')();
-const auth = require('./services/authenticate');
+const authGuard = require('./services/authGuard');
+const authenticate = require('./services/authenticate');
 
 
 //middleware
@@ -10,6 +11,8 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
 });
+
+app.use(authenticate);
 
 
 //product-routes
@@ -23,14 +26,14 @@ const {
     leave,
 } = require('./api/product');
 
-app.get('/rooms', auth, list);
-app.get('/rooms/:id', auth, details);
-app.post('/rooms', auth, post);
-app.patch('/rooms/:id', auth, edit);
-app.delete('/rooms/:id', auth, remove);
+app.get('/rooms', list);
+app.get('/rooms/:id', details);
+app.post('/rooms', authGuard, post);
+app.patch('/rooms/:id', authGuard, edit);
+app.delete('/rooms/:id', authGuard, remove);
 
-app.get('/rooms/:id/join', auth, join);
-app.get('/rooms/:id/leave', auth, leave);
+app.get('/rooms/:id/join', join);
+app.get('/rooms/:id/leave', leave);
 
 
 //auth routes
@@ -51,11 +54,12 @@ const {
     current,
 } = require('./api/user');
 
-app.get('/user', auth, profile);
-app.patch('/user', auth, update);
-app.put('/user/password', auth, password);
-app.get('/user/logout', auth, logout);
-app.get('/user/current', auth, current);
+app.get('/user', authGuard, profile);
+app.get('/user/rooms', authGuard, list);
+app.patch('/user', authGuard, update);
+app.put('/user/password', authGuard, password);
+app.get('/user/logout', authGuard, logout);
+app.get('/user/current', authGuard, current);
 
 
 

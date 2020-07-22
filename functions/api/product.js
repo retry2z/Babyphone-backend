@@ -31,10 +31,6 @@ exports.post = async (request, response) => {
     const uid = request.user.uid;
     const { keyWords, title } = request.body;
 
-    if (!uid) {
-        return response.status(401).json({ error: 'Permission denied' });
-    }
-
     try {
         const item = new Product({ keyWords, title });
         await db.post('rooms', { ...item, author: uid });

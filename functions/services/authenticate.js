@@ -9,6 +9,7 @@ const authenticate = async (request, response, next) => {
             email: '',
             name: 'Anonymous',
             uid: null,
+            isAnonymous: true,
         };
 
         return next();
@@ -32,6 +33,7 @@ const authenticate = async (request, response, next) => {
             email: account.data.email,
             name: account.data.name,
             uid: account.data.uid,
+            isAnonymous: false,
         };
 
         return next();
