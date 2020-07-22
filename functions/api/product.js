@@ -22,12 +22,11 @@ exports.list = async (request, response) => {
 }
 
 exports.post = async (request, response) => {
-    const uid = request.user.uid;
     const { keyWords, title } = request.body;
 
     try {
         const item = new Product({ keyWords, title });
-        await db.post('rooms', { ...item, author: uid });
+        await db.post('rooms', { ...item, author: request.user.uid });
 
         return response.status(201).json({ data: item });
     } catch (err) {
@@ -37,12 +36,11 @@ exports.post = async (request, response) => {
 
 exports.remove = async (request, response) => {
     const { id } = request.params;
-    const uid = request.user.uid;
 
     try {
         const item = await (await db.get('rooms', id)).data();
 
-        if (item.author !== uid) {
+        if (item.author !== request.user.uid) {
             return response.status(401).json({ error: 'Permission denied' });
         }
 
@@ -55,7 +53,6 @@ exports.remove = async (request, response) => {
 }
 
 exports.edit = async (request, response) => {
-    const uid = request.user.uid;
     const { id } = request.params;
     const title = request.body.title || false;
     const keyWords = request.body.keyWords || false;
@@ -63,7 +60,7 @@ exports.edit = async (request, response) => {
     try {
         const item = await (await db.get('rooms', id)).data();
 
-        if (item.author !== uid) {
+        if (item.author !== request.user.uid) {
             return response.status(401).json({ error: 'Permission denied' });
         }
 
