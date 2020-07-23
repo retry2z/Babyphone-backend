@@ -61,7 +61,7 @@ PATCH | /api/rooms | Modify the information about a owned room.
 DELETE | /api/rooms | Delete the record about a owned room. 
 GET | /api/room/:id/join | Join a room.  
 GET | /api/room/:id/leave | Leave a room.
-POST | /api/room/:id/notification | Send a message to all users in room.  
+POST | /api/room/:id/notification | Send a message to all users in room. Must be logged in.  
 | |    
 POST | /api/auth/login | Login with email and password to receive a authorization token.  
 POST | /api/auth/register | Create new account with email and password and receive a authorization token.  
