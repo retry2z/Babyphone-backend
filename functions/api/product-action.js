@@ -44,3 +44,23 @@ exports.leave = async (request, response) => {
         errHandler(err, response);
     }
 }
+
+exports.notify = async (request, response) => {
+    const { id } = request.params;
+
+    try {
+        const item = await (await db.get('rooms', id)).data();
+
+        if (item.author !== request.user.uid) {
+            return response.status(401).json({ error: 'Permission denied' });
+        }
+
+        item.notificationHistory.push(request.body);
+        db.patch('rooms', id, item);
+
+        return response.status(200).json(item);
+
+    } catch (err) {
+        errHandler(err, response);
+    }
+}

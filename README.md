@@ -27,6 +27,7 @@ Product:
  |  DELETE: '/api/room/:id' - delete the record about a owned room.  
  |  GET: '/api/room/:id/join' - join a room.  
  |  GET: '/api/room/:id/leave' - leave a room.  
+ |  POST: '/api/room/:id/notification' - send a message to all users in room.  
  
 
 Authentication:  
@@ -38,6 +39,18 @@ User:
  |  PATCH: '/api/user' - Update information about the current user.  
  |  PUT: '/api/user/password' - Change password.  
  |  GET: '/api/user/logout' - Logout and destroy current authorization token.  
+
+
+METHOD | ROUTE | DESCRIPTION
+------|-------------|---------
+/PRODUCT | ------------- | Current Product name = Rooms
+/GET | /api/rooms | fetching all available rooms list.
+/GET | /api/room/:id | fetching a room detail information about a room.
+/POST | /api/rooms | creating a new room. 
+/service/:serviceid | Service details page | http://hermesgift.bg/index.php/nashatapechatnitsa/item/tamponen-pechat
+/for-us | For us & Contacts page | http://hermesgift.bg/index.php/for-us
+/search/products/:keyword | Search page with specific keyword | http://hermesgift.bg/index.php/component/virtuemart/search?keyword=180-01&limitstart=0&option=com_virtuemart&view=category
+/catalogs | Catalogs page | http://hermesgift.bg/index.php/catalogs
 
 ## Installing and configuration before running
 
