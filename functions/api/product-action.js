@@ -1,3 +1,7 @@
+const db = require('../services/repository');
+const errHandler = require('../utils/errorHandler');
+
+
 exports.join = async (request, response) => {
     const { name, email } = request.user;
     const guest = (name.length) ? name : email;

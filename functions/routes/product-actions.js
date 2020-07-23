@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const authGuard = require('../services/authGuard');
 
 const {
     join,
