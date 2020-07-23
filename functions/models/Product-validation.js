@@ -3,7 +3,6 @@ module.exports = class Product {
         this._title = data.title;
         this._keyWords = data.keyWords || '';
         this.people = [];
-        this.isThereMovement = false;
         this.notificationHistory = [];
         this.createdAt = new Date().toISOString();
     }
