@@ -34,7 +34,7 @@ Enter ```firebase init``` to init your firebase project configuration.
 
 You can also run the application locally using ```firebase serve``` command instead of deploying it every time. When you run that command you may get an error regarding credentials. To fix it, follow the steps mentioned below:
 
-Go to the Project Settings (Settings icon at the top left-hand side)
+Go to the Project Settings (Settings icon at the top left-hand side)  
 Go to the service accounts tab  
 Down there will be the option of Generating a new key. Click on that option and it will download a file with a JSON extension.  
 We need to export these credentials to our command line session. Use the command below to do that:  
