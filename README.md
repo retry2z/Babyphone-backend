@@ -57,9 +57,9 @@ module.exports = {
     measurementId: "......."  
 };  
 ```
-Enter ```firebase init ``` to init your firebase project configuration.
+Enter ```firebase init``` to init your firebase project configuration.
 
-You can also run the application locally using firebase serve command instead of deploying it every time. When you run that command you may get an error regarding credentials. To fix it, follow the steps mentioned below:
+You can also run the application locally using ```firebase serve``` command instead of deploying it every time. When you run that command you may get an error regarding credentials. To fix it, follow the steps mentioned below:
 
 Go to the Project Settings (Settings icon at the top left-hand side)
 Go to the service accounts tab  
@@ -68,7 +68,12 @@ We need to export these credentials to our command line session. Use the command
 ```
 export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"
 ```
+## Deploy
 
+To deploy project:
+```
+firebase deploy
+```
 
 ## Contributing to Serverless-API-Workshop
 To contribute to Serverless-API-Workshop, follow these steps:
