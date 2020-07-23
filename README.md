@@ -13,33 +13,6 @@ This is a basic REST API to store data about a room-product. All guests can view
 - ExpressJS.
 - Firebase Function, Realtime Database, Cloud Firestore, Authentication.
 
-## Documentation and Examples
-
-https://documenter.getpostman.com/view/10051196/T1Djjedg
-
-## Endpoints
-
-METHOD | ROUTE | DESCRIPTION
-------|-------------|---------
-| |    
-GET | /api/rooms | Fetching all available rooms list.
-GET | /api/room/:id | Fetching a room detail information about a room.
-POST | /api/rooms | Creating a new room. 
-PATCH | /api/rooms | Modify the information about a owned room.  
-DELETE | /api/rooms | Delete the record about a owned room. 
-GET | /api/room/:id/join | Join a room.  
-GET | /api/room/:id/leave | Leave a room.
-POST | /api/room/:id/notification | Send a message to all users in room.  
-| |    
-POST | /api/auth/login | Login with email and password to receive a authorization token.  
-POST | /api/auth/register | Create new account with email and password and receive a authorization token.  
-| |    
-GET | /api/user | View current logged user.  
-PATCH | /api/user | Update information about the current user.  
-PUT | /api/user/password | Change password.  
-GET | /api/user/logout | Logout and destroy current authorization token.  
-| |    
-
 ## Installing and configuration before running
 
 Create config folder and config.js into it with API key from Firebase project.  
@@ -68,12 +41,42 @@ We need to export these credentials to our command line session. Use the command
 ```
 export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"
 ```
+
 ## Deploy
 
 To deploy project:
 ```
 firebase deploy
 ```
+
+## Endpoints
+
+METHOD | ROUTE | DESCRIPTION
+------|-------------|---------
+| |    
+GET | /api/rooms | Fetching all available rooms list.
+GET | /api/room/:id | Fetching a room detail information about a room.
+POST | /api/rooms | Creating a new room. 
+PATCH | /api/rooms | Modify the information about a owned room.  
+DELETE | /api/rooms | Delete the record about a owned room. 
+GET | /api/room/:id/join | Join a room.  
+GET | /api/room/:id/leave | Leave a room.
+POST | /api/room/:id/notification | Send a message to all users in room.  
+| |    
+POST | /api/auth/login | Login with email and password to receive a authorization token.  
+POST | /api/auth/register | Create new account with email and password and receive a authorization token.  
+| |    
+GET | /api/user | View current logged user.  
+PATCH | /api/user | Update information about the current user.  
+PUT | /api/user/password | Change password.  
+GET | /api/user/logout | Logout and destroy current authorization token.  
+| |    
+
+
+## Examples
+
+https://documenter.getpostman.com/view/10051196/T1Djjedg
+
 
 ## Contributing to Serverless-API-Workshop
 To contribute to Serverless-API-Workshop, follow these steps:
