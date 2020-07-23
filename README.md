@@ -49,9 +49,19 @@ GET | /api/room/:id | fetching a room detail information about a room.
 POST | /api/rooms | creating a new room. 
 PATCH | /api/rooms | modify the information about a owned room.  
 DELETE | /api/rooms | delete the record about a owned room. 
- |  GET: '/api/room/:id/join' - join a room.  
- |  GET: '/api/room/:id/leave' - leave a room.  
- |  POST: '/api/room/:id/notification' - send a message to all users in room.  
+GET |'/api/room/:id/join'| join a room.  
+GET |'/api/room/:id/leave'| leave a room.  
+POST |'/api/room/:id/notification'| send a message to all users in room.  
+
+ROOMS | ------------- | -------------
+GET | /api/rooms | fetching all available rooms list.
+GET | /api/room/:id | fetching a room detail information about a room.
+POST | /api/rooms | creating a new room. 
+PATCH | /api/rooms | modify the information about a owned room.  
+DELETE | /api/rooms | delete the record about a owned room. 
+GET |'/api/room/:id/join'| join a room.  
+GET |'/api/room/:id/leave'| leave a room.  
+POST |'/api/room/:id/notification'| send a message to all users in room.  
 
 ## Installing and configuration before running
 
