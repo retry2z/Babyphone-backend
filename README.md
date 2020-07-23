@@ -43,6 +43,7 @@ User:
 
 METHOD | ROUTE | DESCRIPTION
 ------|-------------|---------
+| |    
 GET | /api/rooms | Fetching all available rooms list.
 GET | /api/room/:id | Fetching a room detail information about a room.
 POST | /api/rooms | Creating a new room. 
@@ -59,6 +60,7 @@ GET | /api/user | View current logged user.
 PATCH | /api/user | Update information about the current user.  
 PUT | /api/user/password | Change password.  
 GET | /api/user/logout | Logout and destroy current authorization token.  
+| |    
 
 ## Installing and configuration before running
 
