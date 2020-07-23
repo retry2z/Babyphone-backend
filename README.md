@@ -43,25 +43,20 @@ User:
 
 METHOD | ROUTE | DESCRIPTION
 ------|-------------|---------
-ROOMS | ------------- | -------------
 GET | /api/rooms | fetching all available rooms list.
 GET | /api/room/:id | fetching a room detail information about a room.
 POST | /api/rooms | creating a new room. 
 PATCH | /api/rooms | modify the information about a owned room.  
 DELETE | /api/rooms | delete the record about a owned room. 
-GET |'/api/room/:id/join'| join a room.  
-GET |'/api/room/:id/leave'| leave a room.  
-POST |'/api/room/:id/notification'| send a message to all users in room.  
-
-ROOMS | ------------- | -------------
-GET | /api/rooms | fetching all available rooms list.
-GET | /api/room/:id | fetching a room detail information about a room.
-POST | /api/rooms | creating a new room. 
-PATCH | /api/rooms | modify the information about a owned room.  
-DELETE | /api/rooms | delete the record about a owned room. 
-GET |'/api/room/:id/join'| join a room.  
-GET |'/api/room/:id/leave'| leave a room.  
-POST |'/api/room/:id/notification'| send a message to all users in room.  
+GET | /api/room/:id/join | join a room.  
+GET | /api/room/:id/leave | leave a room.  
+POST | /api/room/:id/notification | send a message to all users in room.  
+POST | /api/auth/login | Login with email and password to receive a authorization token.  
+POST | /api/auth/register | Create new account with email and password and receive a authorization token.  
+GET | /api/user | View current logged user.  
+PATCH | /api/user | Update information about the current user.  
+PUT | /api/user/password | Change password.  
+GET | /api/user/logout | Logout and destroy current authorization token.  
 
 ## Installing and configuration before running
 
