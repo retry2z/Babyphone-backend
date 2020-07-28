@@ -16,7 +16,9 @@ exports.login = async (request, response) => {
             return response.status(401).json({ code, error: 'Invalid email or password' });
         }
 
-        return response.status(200).json({ token: await user.getIdToken(), message: 'Login successfully', code, });
+        return response.status(200)
+            .header("Authorization", await user.getIdToken())
+            .send({ message: 'Login successfully', code, });
 
     } catch (err) {
         errHandler(err, response);
@@ -48,7 +50,9 @@ exports.register = async (request, response) => {
         }
         await database.child(user.uid).set(user);
 
-        return response.status(201).json({ token, message: 'Register successfully' });
+        return response.status(201)
+            .header("Authorization", token)
+            .send({ message: 'Registration successfully', });
 
     } catch (err) {
         errHandler(err, response);
