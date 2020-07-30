@@ -4,7 +4,7 @@ module.exports = class Product {
         this._keyWords = data.keyWords || '';
         this.people = [];
         this.notificationHistory = [];
-        this.createdAt = new Date().toISOString();
+        this.createdAt = new Date().toGMTString();
     }
 
     set _title(data) {

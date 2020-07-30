@@ -4,7 +4,7 @@ module.exports = class Account {
         this._password = data.password || null;
         this._name = data.name || '';
         this._imageUrl = data.imageUrl || '';
-        this.createdAt = new Date().toISOString();
+        this.createdAt = new Date().toGMTString();
     }
 
     set _name(data) {
