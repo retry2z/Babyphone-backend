@@ -18,7 +18,7 @@ exports.login = async (request, response) => {
 
         return response.status(200)
             .header("Authorization", await user.getIdToken())
-            .send({ message: 'Login successfully', code, });
+            .send({ message: 'Login successfully', code, token: await user.getIdToken() });
 
     } catch (err) {
         errHandler(err, response);
@@ -52,7 +52,7 @@ exports.register = async (request, response) => {
 
         return response.status(201)
             .header("Authorization", token)
-            .send({ message: 'Registration successfully', });
+            .send({ message: 'Registration successfully', token });
 
     } catch (err) {
         errHandler(err, response);
