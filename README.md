@@ -68,6 +68,7 @@ POST | /api/auth/register | Create new account with email and password and recei
 | |    
 GET | /api/user | View current logged user.  
 PATCH | /api/user | Update information about the current user.  
+GET | /api/user/rooms | Return all created rooms by current user.  
 PUT | /api/user/password | Change password.  
 GET | /api/user/logout | Logout and destroy current authorization token.  
 | |    
