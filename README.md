@@ -1,8 +1,8 @@
-# Serverless-API-Workshop
+# Babyphone-SearverlessAPI
 
-![GitHub repo size](https://img.shields.io/github/repo-size/retry2z/Serverless-API-Workshop)
-![GitHub stars](https://img.shields.io/github/stars/retry2z/Serverless-API-Workshop?style=social)
-![GitHub forks](https://img.shields.io/github/forks/retry2z/Serverless-API-Workshop?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/retry2z/Babyphone-SearverlessAPI)
+![GitHub stars](https://img.shields.io/github/stars/retry2z/Babyphone-SearverlessAPI?style=social)
+![GitHub forks](https://img.shields.io/github/forks/retry2z/Babyphone-SearverlessAPI?style=social)
 
 ## Description
 
