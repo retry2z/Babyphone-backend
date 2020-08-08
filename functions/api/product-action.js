@@ -8,11 +8,10 @@ exports.join = async (request, response) => {
     const { id } = request.params;
 
     try {
-        const item = await (await db.get('rooms', id)).data();
+        const item = (await db.get('rooms', id)).data();
         item.people.push(guest);
 
         db.patch('rooms', id, item);
-
 
         return response.status(200).json(item);
 

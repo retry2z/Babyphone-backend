@@ -4,7 +4,7 @@ module.exports = class Product {
         this._keyWords = data.keyWords || '';
         this.people = [];
         this.notificationHistory = [];
-        this.createdAt = new Date().toGMTString();
+        this.createdAt = new Date(Date.now()).toUTCString();
     }
 
     set _title(data) {
@@ -30,6 +30,8 @@ module.exports = class Product {
             const word = x.trim();
             if (pattern.test(word)) {
                 return word
+            } else {
+                return false
             }
         });
 

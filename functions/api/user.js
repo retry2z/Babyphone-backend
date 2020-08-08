@@ -26,7 +26,9 @@ exports.update = async (request, response) => {
         }
         await auth.edit(request.user.uid, new Account(temp));
 
-        return response.status(200).json({ message: 'Updated successfully', data: request.body });
+        const user = await auth.profile(request.user.uid);
+
+        return response.status(200).json({ message: 'Updated successfully', data: user.data });
 
     } catch (err) {
         errHandler(err, response);
@@ -34,20 +36,14 @@ exports.update = async (request, response) => {
 }
 
 exports.password = async (request, response) => {
-    const { password, rePassword } = request.body;
+    const { password, newPassword, rePassword } = request.body;
 
-    if (password !== rePassword) {
+    if (newPassword !== rePassword) {
         return response.status(400).json({ message: 'Passwords are not equals' });
     }
 
     try {
-        const user = await auth.currentUser();
-
-        if (user.uid !== request.user.uid) {
-            return response.status(401).json({ error: 'Unauthorized' });
-
-        }
-        await auth.changePassword(password);
+        await auth.changePassword(rePassword);
 
         return response.status(200).json({ message: 'Password updated successfully' });
 
