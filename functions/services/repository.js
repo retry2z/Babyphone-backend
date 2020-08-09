@@ -30,7 +30,7 @@ const db = {
 
     async patch(collection, id, data) {
         try {
-            return await firestore.collection(collection).doc(id).update(data);
+            return await firestore.collection(collection).doc(id).update({ ...data });
         }
         catch (error) {
             throw new URIError('Something went wrong with db ' + error.message);
