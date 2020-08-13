@@ -2,9 +2,9 @@ module.exports = class Product {
     constructor(data) {
         this._title = data.title;
         this._keyWords = data.keyWords || '';
-        this.people = [];
-        this.notificationHistory = [];
-        this.createdAt = new Date(Date.now()).toUTCString();
+        this.people = data.people || [];
+        this.notificationHistory = data.notificationHistory || [];
+        this.createdAt = data.createdAt || new Date(Date.now()).toUTCString();
     }
 
     set _title(data) {
@@ -21,10 +21,6 @@ module.exports = class Product {
     }
 
     set _keyWords(data) {
-        if (!data.length) {
-            return
-        }
-
         const pattern = /^[A-Za-z0-9]{2,}$/g;
         const words = data.split(' ').filter(x => {
             const word = x.trim();

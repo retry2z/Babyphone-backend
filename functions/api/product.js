@@ -55,7 +55,7 @@ exports.remove = async (request, response) => {
 exports.edit = async (request, response) => {
     const { id } = request.params;
     const title = request.body.title || false;
-    const keyWords = request.body.keyWords || false;
+    const keyWords = request.body.keyWords || '';
 
     try {
         const item = await (await db.get('rooms', id)).data();
@@ -65,10 +65,12 @@ exports.edit = async (request, response) => {
         }
 
         const temp = {
+            ...item,
             title: title ? title : item.title,
-            keyWords: keyWords ? keyWords : item.keyWords,
+            keyWords: keyWords,
         }
 
+        console.log(new Product(temp));
         await db.patch('rooms', id, new Product(temp));
         return response.status(200).json({ data: id + ' has been updated', });
     } catch (err) {

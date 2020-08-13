@@ -4,12 +4,12 @@ module.exports = class Account {
         this._password = data.password || null;
         this._name = data.name || '';
         this._imageUrl = data.imageUrl || '';
-        this.createdAt = new Date(Date.now()).toUTCString();
+        this.createdAt = data.createdAt || new Date(Date.now()).toUTCString();
     }
 
     set _name(data) {
         const pattern = /^\w+$/g;
-        if (!pattern.test(data) && data.length) {
+        if (!pattern.test(data) && !!data) {
             throw new TypeError('Invalid name');
         }
         
@@ -43,7 +43,7 @@ module.exports = class Account {
 
     set _imageUrl(data) {
         const pattern = /^(http|https):/g;
-        if (!pattern.test(data) && data.length) {
+        if (!pattern.test(data) && !!data) {
             throw new TypeError('Invalid image URL');
         }
         this.imageUrl = data;

@@ -21,8 +21,9 @@ exports.update = async (request, response) => {
         const { data } = await auth.profile(request.user.uid);
 
         const temp = {
-            name: name ? name : data.name,
-            imageUrl: imageUrl ? imageUrl : data.imageUrl,
+            ...data,
+            name,
+            imageUrl
         }
         await auth.edit(request.user.uid, new Account(temp));
 
